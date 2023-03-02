@@ -1,0 +1,23 @@
+import pandas as pd
+import requests
+from pprint import PrettyPrinter
+pp = PrettyPrinter()
+import collections
+collections.Callable = collections.abc.Callable
+
+api_key="3dYu09x4ugiJEgdaH4f9XwIHLaKAhTvSR2cf2fhg"
+
+
+URL_Browse = "https://api.nasa.gov/neo/rest/v1/neo/browse/"
+paradigmas_busca = {'api_key':api_key}
+response_busc = requests.get(URL_Browse,params=paradigmas_busca).json()
+pp.pprint(response_busc)
+
+
+id=input("Insira a identificacação do asteroide (ID): ")
+
+asteroid_id = id
+URL_Lookup = "https://api.nasa.gov/neo/rest/v1/neo/"+ asteroid_id
+paradigmas_proc = {'api_key':api_key}
+response_proc = requests.get(URL_Lookup,params=paradigmas_proc).json()
+pp.pprint(response_proc)
